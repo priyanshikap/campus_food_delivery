@@ -8,10 +8,11 @@ import staffRoutes from './routes/staffRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import inventoryRoutes from './routes/inventoryRoutes.js';
 import { errorMiddleware } from './middleware/errorMiddleware.js';
+import { env } from './config/env.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: env.frontendUrl }));
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
